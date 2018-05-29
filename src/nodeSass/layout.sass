@@ -1,0 +1,191 @@
+.elvCC
+	position: fixed
+	box-sizing: border-box
+	z-index: 9998
+	bottom: 0
+	left: 0
+	right: 0
+	padding: 15px 25px
+	opacity: 1
+	background-color: rgba(29,29,29,0.9)
+	color: #F5F5F5
+	transition: max-height 0.3s linear, margin-bottom 0.3s linear
+	max-height: 0
+	margin-bottom: -30px
+	overflow-y: hidden
+	
+	@media screen and (max-width: 768px)
+		display: flex
+		flex-direction: column
+		padding: 10px 10px
+	
+	&.-opened
+		max-height: 100vh
+		margin-bottom: 0
+		
+	*
+		font-family: Helvetica,Calibri,Arial,sans-serif
+		font-size: 14px
+		line-height: 1.5em
+		
+	a
+		text-decoration: none
+		color: #31A8F0
+		display: inline-block
+		position: relative
+		margin-left: 12px
+		
+		&:before
+			content: '-'
+			position: absolute
+			left: -10px
+			color: #fff
+		
+		@media screen and (max-width: 768px)
+			margin-top: 10px
+			display: block
+				
+		&:hover
+			text-decoration: underline
+			color: #B2F7FF
+	
+	label
+		cursor: pointer
+		user-select: none
+	
+	input
+		&[type='checkbox']
+			display: none
+			
+	
+	&__fancyCheckbox
+		position: relative
+		display: block
+		height: 12px
+		width: 12px
+		border: 2px solid #656565
+		
+	input[type=checkbox]:checked + .elvCC__fancyCheckbox
+	
+		&:before
+			content: ''
+			position: absolute
+			background-color: #31A8F0
+			width: 2px
+			height: 8px
+			left: 6px
+			top: 2px
+			transform: rotate(45deg)
+	
+		&:after
+			content: ''
+			position: absolute
+			background-color: #31A8F0
+			width: 3px
+			height: 2px
+			left: 2px
+			top: 6px
+			transform: rotate(45deg)
+			
+	&__summonButton
+		position: fixed
+		bottom: 0
+		left: 0
+		width: 0
+		height: 0
+		border-style: solid
+		border-width: 50px 0 0 50px
+		border-color: transparent transparent transparent #007bff
+		cursor: pointer
+		transition: left 0.3s linear
+		
+		&:after
+			content: 'C'
+			position: absolute
+			left: -40px
+			bottom: 2px
+			color: #fff
+			font-size: 16px
+			font-weight: 600
+				
+	&.-opened
+		.elvCC__summonButton
+			left: -50px
+			
+			&:after
+				left: -50px
+	
+	&__base
+		display: flex
+		justify-content: space-between
+		align-items: center
+		
+		@media screen and (max-width: 768px)
+			display: block
+		
+		&__description
+			flex-grow: 1
+			margin-right: 20px
+			
+			@media screen and (max-width: 768px)
+				margin-right: 0
+				padding-bottom: 15px
+			
+		
+		&__confirm
+			font-size: 15px
+			font-weight: 600
+			background-color: #F1D600
+			color: #000
+			cursor: pointer
+			user-select: none
+			padding: 5px 10px
+			border-radius: 3px
+			min-width: 140px
+			text-align: center
+			white-space: nowrap
+			transition: background-color 0.3s ease
+			
+			&:hover
+				background-color: #FFFC26
+				
+	&__segments
+		transition: max-height 0.3s linear, margin-top 0.2s ease
+		max-height: 0
+		overflow-x: auto
+		-webkit-overflow-scrolling: touch
+		margin-right: -25px
+		padding-right: 25px
+		
+		@media screen and (max-width: 768px)
+			margin-right: -10px
+			padding-right: 10px
+		
+		&.-opened
+			margin-top: 20px
+			max-height: 300px
+			margin-bottom: -15px
+			padding-bottom: 10px
+	
+		&__segment
+			display: flex
+			align-items: flex-start
+			opacity: 0.6
+			transition: opacity 0.3s linear
+			padding: 5px 0
+		
+			&.-isAllowed
+				opacity: 1
+			
+			&__checkbox
+				margin-top: 3px
+				margin-right: 10px
+				
+			&__text
+				flex-grow: 1
+				
+				&__title
+					color: #31A8F0
+					
+				&__description
+					color: #9a9a9a

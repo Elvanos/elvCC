@@ -1,0 +1,4 @@
+globals = {}
+
+
+export default globals
